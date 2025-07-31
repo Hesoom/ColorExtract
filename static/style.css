@@ -119,21 +119,40 @@ img {
 
 }
 
-.button-box {
-    display:block;
+form {
+  display: flex;
+  gap: 2rem;
+}
+.custom-file-upload{
+    border: 0;
+    background-color: #e7e7e7;
+    width: 200px;
+    height: 55px;
+    border-radius: 20px;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover {
+  background-color: #cfcfcf;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 .upload_button {
     border: 0;
-    background-color: #e7e7e7;
-    width: 240px;
+    background-color: #8dccff;
+    width: 200px;
     height: 55px;
     border-radius: 20px;
     cursor: pointer;
 }
 
 .upload_button:hover {
-  background-color: #cfcfcf;
+  background-color: #c3e4ff;
 }
 
 /* MEDIA QUERY  */

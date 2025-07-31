@@ -20,7 +20,11 @@
         </header>
         <div class="inter-bold title">ColorExtract</div>
         <div class="box">
-            <img src="static/img/image.jpg" alt="">
+            {% if not filename %}
+                <img src="static/img/image.jpg">
+            {% else %}
+                <img src="{{ url_for('uploaded_file', filename=filename) }}">
+            {% endif %}
             <div class="color-table">
                 <table>
                     <thead>
@@ -45,8 +49,15 @@
             </div>
         </div>
         <div class="button-box">
-            <button class="upload_button inter-medium">Upload an image</button>
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <label for="file-upload" class="custom-file-upload inter-medium">
+                    Choose Image
+                </label>
+                <input id="file-upload" type="file" name="image" accept="image/*" required>
+                <button type="submit" class="upload_button inter-medium">Run</button>
+            </form>
         </div>
+
     </div>
 
 
