@@ -186,3 +186,11 @@ input[type="file"] {
     margin-bottom: 0;
   }
 }
+
+@media screen and (max-width: 550px) {
+
+  img {
+    max-width: 400px;
+  }
+
+}

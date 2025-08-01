@@ -23,7 +23,8 @@
             {% if not filename %}
                 <img src="static/img/image.jpg">
             {% else %}
-                <img src="{{ url_for('uploaded_file', filename=filename) }}">
+                <img src="{{ url_for('uploaded_file', filename=filename) }}?t={{ time() }}">
+
             {% endif %}
             <div class="color-table">
                 <table>
@@ -35,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for color, percentage in colors.items() %}
+                        {% for color, percentage in colors %}
                             <tr class="color-box inter-light">
                                 <td>
                                     <div class="color-shape" style="background-color: {{ color }};"></div>
@@ -49,13 +50,19 @@
             </div>
         </div>
         <div class="button-box">
-            <form action="/" method="POST" enctype="multipart/form-data">
-                <label for="file-upload" class="custom-file-upload inter-medium">
-                    Choose Image
-                </label>
-                <input id="file-upload" type="file" name="image" accept="image/*" required>
-                <button type="submit" class="upload_button inter-medium">Run</button>
-            </form>
+        <form id="uploadForm" action="/" method="POST" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload inter-medium">
+                Choose Image
+            </label>
+            <input id="file-upload" type="file" name="image" accept="image/*" required>
+        </form>
+        <script>
+            document.getElementById('file-upload').addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    document.getElementById('uploadForm').submit();
+                }   
+            });
+        </script>
         </div>
 
     </div>
